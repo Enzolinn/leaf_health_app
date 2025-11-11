@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "name": "leafhealth",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart"
+        }
+
+
+    ]
+}

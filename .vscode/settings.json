@@ -1,0 +1,11 @@
+
+
+{
+    "dart.flutterSdkPath": "/home/enzo/flutter2",
+    "dart.sdkPath": "/home/enzo/flutter2/bin/cache/dart-sdk",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#18276A",
+        "titleBar.activeBackground": "#223794",
+        "titleBar.activeForeground": "#F9FAFE"
+    }
+}
