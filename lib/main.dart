@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'prediction_provider.dart'; // Nosso gerenciador de estado
-import 'home_page.dart';           // Nossa tela principal
+import 'prediction_provider.dart';
+import 'splash_screen.dart';
 
 void main() {
   runApp(
-    // 1. Envolvemos o app todo no Provider.
-    // Isso permite que qualquer widget "descendente" acesse o PredictionProvider.
     ChangeNotifierProvider(
       create: (context) => PredictionProvider(),
       child: const MyApp(),
@@ -20,17 +18,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Leaf Health Detector',
+      title: 'LeafHealth',
       theme: ThemeData(
-        // 2. Definimos um tema. O 'primarySwatch' gera várias
-        // tonalidades de verde automaticamente.
-        primarySwatch: Colors.green,
+        colorSchemeSeed: Colors.green, 
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        useMaterial3: true,
       ),
-      // 3. Remove o banner "DEBUG" do canto da tela
+
       debugShowCheckedModeBanner: false,
-      // 4. Define a tela inicial do aplicativo
-      home: const HomePage(),
+
+      home: const SplashScreen(),
     );
   }
 }

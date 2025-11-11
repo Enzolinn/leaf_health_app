@@ -1,5 +1,5 @@
-import 'dart:convert'; // Para base64Decode
-import 'dart:typed_data'; // Para Uint8List
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 
 class Base64ImageDisplay extends StatelessWidget {
@@ -11,8 +11,6 @@ class Base64ImageDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     // 1. Tenta decodificar a string Base64
     try {
-      // Algumas APIs incluem um prefixo 'data:image/png;base64,'
-      // Este código verifica se o prefixo existe e o remove.
       final String cleanBase64 = base64String.contains(',')
           ? base64String.split(',')[1]
           : base64String;
@@ -26,20 +24,17 @@ class Base64ImageDisplay extends StatelessWidget {
         width: 300,
         height: 300,
         fit: BoxFit.cover,
-        // 4. (Importante) Tratamento de erro caso os bytes
-        // não formem uma imagem válida.
+
         errorBuilder: (context, error, stackTrace) {
           return _buildErrorWidget('Erro ao carregar imagem');
         },
       );
     } catch (e) {
-      // 5. (Importante) Tratamento de erro caso a string
-      // Base64 seja mal formatada.
+
       return _buildErrorWidget('Formato Base64 inválido');
     }
   }
 
-  // Widget auxiliar para mostrar um erro padronizado
   Widget _buildErrorWidget(String message) {
     return Container(
       width: 300,

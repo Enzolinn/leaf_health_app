@@ -1,10 +1,10 @@
-import 'dart:io'; // Para a classe File
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart'; // Para ImageSource
-import 'package:provider/provider.dart'; // Para context.watch
-import 'prediction_provider.dart'; // Nosso provider
-import 'prediction_model.dart'; // Nosso modelo (para o tipo da resposta)
-import 'base64_image_widget.dart'; // Nosso widget de imagem
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart'; 
+import 'prediction_provider.dart'; 
+import 'prediction_model.dart'; 
+import 'base64_image_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detector de Saúde Foliar'),
+        title: const Text('LeafHealth'),
       ),
       // 2. SingleChildScrollView evita que o conteúdo
       // "estoure" a tela quando os resultados aparecerem.
