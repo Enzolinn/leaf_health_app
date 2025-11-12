@@ -1,4 +1,3 @@
-import 'dart:io'; // Para a classe File
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart'; // Para ImageSource
 import 'package:provider/provider.dart'; // Para context.watch
@@ -198,14 +197,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 24),
-          const Text(
-            'Heatmap (Grad-CAM):',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 8),
-          Base64ImageDisplay(base64String: response.gradcamPngB64),
+          
+          
           const SizedBox(height: 24),
           const Text(
             'Máscara da Doença:',

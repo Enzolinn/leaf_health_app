@@ -1,7 +1,6 @@
 class PredictionResponse {
   final String plant;
   final String disease;
-  final String gradcamPngB64;
   final String maskPngB64;
   // Deixei 'scores' de fora por enquanto para simplificar, 
   // mas podemos adicionar depois se você quiser exibir porcentagens.
@@ -9,7 +8,6 @@ class PredictionResponse {
   PredictionResponse({
     required this.plant,
     required this.disease,
-    required this.gradcamPngB64,
     required this.maskPngB64,
   });
 
@@ -20,8 +18,7 @@ class PredictionResponse {
       // Usamos '??' como segurança: se o valor vier nulo, usamos um texto padrão.
       plant: json['plant'] ?? 'Desconhecida',
       disease: json['disease'] ?? 'Não identificada',
-      gradcamPngB64: json['gradcam_png_b64'] ?? '',
-      maskPngB64: json['mask_png_b64'] ?? '',
+      maskPngB64: json['leaf_png_b64'] ?? '',
     );
   }
 }

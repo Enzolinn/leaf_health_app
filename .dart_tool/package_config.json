@@ -26,6 +26,12 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "carousel_slider",
+      "rootUri": "file:///home/enzo/.pub-cache/hosted/pub.dev/carousel_slider-5.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///home/enzo/.pub-cache/hosted/pub.dev/characters-1.4.0",
       "packageUri": "lib/",
