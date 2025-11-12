@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart'; // Para ImageSource
+import 'package:leaf_health_app/result_page.dart';
 import 'package:provider/provider.dart'; // Para context.watch
 import 'prediction_provider.dart'; // Nosso provider
 import 'prediction_model.dart'; // Nosso modelo (para o tipo da resposta)
@@ -82,7 +83,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 30),
 
               // --- 5. Botão de Analisar ---
-              // Só aparece se uma imagem foi selecionada E não estiver carregando
+      
               if (provider.selectedImage != null && !provider.isLoading)
                 ElevatedButton.icon(
                   icon: const Icon(Icons.science_outlined),
@@ -113,9 +114,25 @@ class HomePage extends StatelessWidget {
               // --- 7. Seção de Resultados ---
               // Aparece quando a resposta da API chega E não estamos carregando
               if (provider.predictionResponse != null && !provider.isLoading)
-                _buildResults(provider.predictionResponse!),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                          doenca: provider.predictionResponse!.disease,
+                          planta: provider.predictionResponse!.plant,
+                          selectedImage: provider.selectedImage!,
+                          base64String: provider.predictionResponse!.maskPngB64,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text("resultado pronto"),
+                )
+                
               
-              const SizedBox(height: 30), // Espaço no final
+          
             ],
           ),
         ),
@@ -155,60 +172,5 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Helper: Constrói o widget de resultados
-  Widget _buildResults(PredictionResponse response) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Text(
-            'Resultado da Análise:',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 16),
-          Card(
-            elevation: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      style: const TextStyle(fontSize: 18),
-                      children: [
-                        const TextSpan(text: 'Planta: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: response.plant),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text.rich(
-                    TextSpan(
-                      style: const TextStyle(fontSize: 18),
-                      children: [
-                        const TextSpan(text: 'Doença: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: response.disease, style: const TextStyle(color: Colors.red)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          
-          
-          const SizedBox(height: 24),
-          const Text(
-            'Máscara da Doença:',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 8),
-          Base64ImageDisplay(base64String: response.maskPngB64),
-        ],
-      ),
-    );
-  }
+
 }
