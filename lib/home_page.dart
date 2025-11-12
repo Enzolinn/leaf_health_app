@@ -84,7 +84,9 @@ class HomePage extends StatelessWidget {
 
               // --- 5. Botão de Analisar ---
       
-              if (provider.selectedImage != null && !provider.isLoading)
+              if (provider.selectedImage != null &&
+                  !provider.isLoading &&
+                  provider.predictionResponse == null)
                 ElevatedButton.icon(
                   icon: const Icon(Icons.science_outlined),
                   label: const Text('Analisar Imagem'),
@@ -114,7 +116,8 @@ class HomePage extends StatelessWidget {
               // --- 7. Seção de Resultados ---
               // Aparece quando a resposta da API chega E não estamos carregando
               if (provider.predictionResponse != null && !provider.isLoading)
-                TextButton(
+              
+                ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -128,7 +131,22 @@ class HomePage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text("resultado pronto"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green, // Cor de destaque
+                    foregroundColor: Colors.white, // Cor do texto
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 15,
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  child: Text(
+                    "Ver Resultado",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 )
                 
               
