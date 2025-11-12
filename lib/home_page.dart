@@ -127,6 +127,9 @@ class HomePage extends StatelessWidget {
                           planta: provider.predictionResponse!.plant,
                           selectedImage: provider.selectedImage!,
                           base64String: provider.predictionResponse!.maskPngB64,
+                          clusterBase64:
+                              provider.predictionResponse!.clusterPngB64,
+                          damage: provider.predictionResponse!.damage,
                         ),
                       ),
                     );

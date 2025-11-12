@@ -6,14 +6,18 @@ import 'package:leaf_health_app/base64_image_widget.dart';
 class ResultPage extends StatelessWidget {
   final String base64String;
   final File selectedImage;
+  final String clusterBase64;
   final String planta;
   final String doenca;
+  final double damage;
   const ResultPage({
     super.key,
     required this.base64String,
     required this.selectedImage,
+    required this.clusterBase64,
     required this.doenca,
     required this.planta,
+    required this.damage
   });
 
   @override
@@ -67,6 +71,22 @@ class ResultPage extends StatelessWidget {
                             ],
                           ),
                         ),
+                        const SizedBox(height: 8),
+                        Text.rich(
+                          TextSpan(
+                            style: const TextStyle(fontSize: 18),
+                            children: [
+                              const TextSpan(
+                                text: 'Dano na folha: ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              TextSpan(
+                                text: "${damage.toStringAsFixed(2)}%",
+                                style: const TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -87,11 +107,18 @@ class ResultPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
+                  "Mascara cluster:",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Base64ImageDisplay(base64String: clusterBase64),
+                SizedBox(height: 100),
+                SizedBox(height: 20),
+                Text(
                   "Mascara folha saudável:",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Base64ImageDisplay(base64String: base64String),
-                SizedBox(height: 100)
+                SizedBox(height: 100),
               ],
             ),
           ),
