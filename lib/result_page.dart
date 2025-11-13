@@ -55,7 +55,7 @@ class ResultPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     _SummaryRow(
-                      label: 'Planta identificada',
+                      label: 'Planta inferida',
                       value: planta,
                       icon: Icons.eco_outlined,
                     ),
@@ -139,7 +139,7 @@ class ResultPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             _LabeledImageCard(
-              title: 'Regiões saudáveis',
+              title: 'Mascara folha saudável',
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Base64ImageDisplay(base64String: base64String),
